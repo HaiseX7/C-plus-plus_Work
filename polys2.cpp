@@ -2,7 +2,8 @@
   File: polys.cpp
   Created by: Wade Goodell
   Creation Date: 12/1/2018
-  Synopsis: This program takes in polynomials and manipulates them and provides different kinds of information to them.
+  Synopsis: This program takes in polynomials and manipulates them and 
+  provides different kinds of information to them.
 */
 
 #include <iostream>
@@ -77,7 +78,6 @@ int main()
 	cout << endl;
 	display_stats(poly2, "You entered polynomial #2");
 
-	
 	cout << "Multiplication terms - " << endl << endl;;
 	poly1.displayMultiply(poly2, "Poly #1 * Poly #2");
 	poly2.displayMultiply(poly1, "Poly #2 * Poly #1");
@@ -87,14 +87,12 @@ int main()
 	evaluate_poly(poly1);
 	cout << endl;
 	
-	/*
 	if (poly1.termCount() > 0) {
 		cout << "Enter a scale factor to apply to polynomial #1: ";
 		cin >> scale;
 		poly1.scale(scale);
 		display_stats(poly1, "The polynomial after scaling");
 	}
-	*/
 
 	goodbye_banner(); 
 	
@@ -224,12 +222,15 @@ void Poly::addTerm(const int coeff, const int exp) // function for the add term
 	newterm.setCoeff(coeff);
 	terms.push_back(newterm);
 }
-/*
 void Poly::scale(const int fact) // function that scales the polynomial 
 {
-
+	for(int i = 0; i < terms.size(); i++)
+	{
+		int term_coeff = terms.at(i).getCoeff();
+		cout << term_coeff;
+		terms.at(i).setCoeff(term_coeff * fact);
+	}
 }
-*/
 double Poly::eval(const double x) const // function that evaluates
 {
 	double sum(0);
@@ -268,7 +269,8 @@ void Poly::display(const string & label) const // function for the display
 	}
 	cout << endl;
 }
-void Poly::displayMultiply(const Poly & poly, const string & label) const // function for displaying the multiplication
+void Poly::displayMultiply(const Poly & poly, const string & label) const 
+// function for displaying the multiplication
 {
 	cout << endl << label << endl;
 	for(int i = 0; i<terms.size(); i++)
@@ -326,7 +328,6 @@ void display_banner() // function for displaying the banner
 	cout << "You will enter two polynomials." << endl;
 	cout << "Please follow all instructions below." << endl;
 }
-
 Poly read_poly(const int label) // function for reading the polynomial
 {
 	int coeff, exp, prevexp = 999;
@@ -385,7 +386,6 @@ void evaluate_poly(const Poly & poly) // evaluates the polynomial
 		cout << "When x = " << value << " the polynomial evaluates to " << poly.eval(value) << endl << endl;
 	}
 }
-
 void goodbye_banner() // function for the goodbye banner
 {
 	cout << endl;
